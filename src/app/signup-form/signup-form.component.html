@@ -1,0 +1,30 @@
+<form [formGroup]="SignupForm">
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input 
+        formControlName="UserName"
+            id="username" 
+            type="text" 
+            class="form-control">
+    </div>
+    <div *ngIf="UsernameAccessor.pending"> whating for the server ...</div>
+       <div class="alert alert-danger" *ngIf="UsernameAccessor.touched && !UsernameAccessor.valid"> 
+            <div *ngIf="UsernameAccessor.errors.required ">User name name is required </div>
+            <div *ngIf="UsernameAccessor.errors.email">user name must be  valied email </div>
+            <div *ngIf="UsernameAccessor.errors.canothavespace">user name can not have space </div>
+            <div *ngIf="UsernameAccessor.errors.MustbeUniqu">user name exist on the server  </div>
+        </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input 
+        formControlName="PassWord"
+            id="password" 
+            type="text" 
+            class="form-control">
+    </div>
+    <div class="alert alert-danger" *ngIf="SignupForm.get('PassWord').touched && !SignupForm.get('PassWord').valid">
+            <div name="req" *ngIf="SignupForm.get('PassWord').errors.required ">PassWordis required </div>
+            <div name="req"  *ngIf="SignupForm.get('PassWord').errors.minlength">PassWord must be greter tha 8 </div>
+        </div>
+    <button class="btn btn-primary" type="submit">Sign Up</button>
+</form>

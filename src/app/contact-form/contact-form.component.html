@@ -1,0 +1,50 @@
+<form #Nfrom="ngForm" (ngSubmit)="MethodSubmite()">
+    <div class="form-group">
+      <label name="fristname"></label>
+      <input name="firtsname" id="firstname" type="text" class="form-contrl" 
+            ngModel #Mfirstname="ngModel" required minlength="3" maxlength="8">
+        <div class="alert alert-danger" *ngIf="Mfirstname.touched && !Mfirstname.valid">
+            <div *ngIf="Mfirstname.errors.required ">First name is required </div>
+            <div *ngIf="Mfirstname.errors.minlength">First name must be gret  3 charachter  </div>
+            <div *ngIf="Mfirstname.errors.maxlength">First name must be  less 8 charachter </div>
+        </div>
+    </div>
+    <div class="checkbox">
+     <label>
+        <input type="checkbox" ngModel name="Subscription" #subs="ngModel"> Subscribe for
+     </label>
+    </div>
+    <div class="form-group">
+        <label> contact method Hard coded</label>
+          <select ngModel name="contact-method" id="contact-method">
+            <option value="e-mail">e-mail</option>
+            <option value="mail">mail</option>
+            <option value="news later">news later</option>
+            <option value="phone call">phone call</option>
+          </select><br>
+          <label> contact method consumed form service  and displayed using ngFor directive </label>
+          <select ngModel name="contact-method2" id="contact-method2">
+              <option  *ngFor="let Myl of MyList">{{Myl}}</option>
+          </select>
+  </div>
+<div class="radio">
+  <label>
+    Male
+    <input ngModel type="radio" name="sex" value="M" >
+  </label>
+</div>
+<div class="radio">
+    <label>
+      Female
+      <input ngModel type="radio" name="sex" value="F" >
+    </label>
+  </div>
+
+    <div >
+        <p>{{Nfrom.value|json}}</p>
+         
+      </div>
+  <div>
+     <button class="btn btn-primary">Submit</button>
+  </div>
+</form>

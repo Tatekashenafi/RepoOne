@@ -1,0 +1,49 @@
+
+
+<h1>Sturctrual if in div Directive test </h1>
+<div *ngIf="Moveicategory.length>=4">
+ Morthan 4 category of gner div if only
+</div>
+<div *ngIf="Moveicategory.length<4">
+  Lessthan 4 category of gner div if only
+</div>
+<h1>Sturctrual if else in  ng-template  Directive test </h1>
+<div *ngIf="Moveicategory.length<4; then morcategory else lasecategory"></div>
+<ng-template #morcategory>
+ Morthan 4 category of gner with ng-template code if else
+</ng-template>
+<ng-template #lasecategory>
+  Lessthan 4 category of gner ng-template code if else
+ </ng-template>
+  <h1>Sturctrual For Directive test </h1>
+<ul>
+  <li *ngFor="let category of Moveicategory">
+    {{category}}
+  </li>
+</ul>
+
+<H1> ngswitch Directive test </H1>
+<ul class="nav nav-pills">
+  <li class="nav-item ">
+    <a class="nav-link " [class.active]="ViewMode=='M'" (click)="ChangeViewMode('M')">Map View</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [class.active]="ViewMode=='S'" (click)="ChangeViewMode('S')">Satelite view</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [class.active]="ViewMode=='T'" (click)="ChangeViewMode('T')">Trafice view</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled " [class.active]="ViewMode=='B'" (click)="ChangeViewMode('B')">Bired view </a>
+  </li>
+</ul>
+
+<div [ngSwitch]="ViewMode">
+  <div *ngSwitchCase="'M'">Map View is Showing</div>
+  <div *ngSwitchCase="'S'">Satelite View is Showing</div>
+  <div *ngSwitchCase="'T'">Trafice View is Showing</div>
+  <div *ngSwitchCase="'B'">Bired View is Showing</div>
+</div>
+
+
+
